@@ -19,12 +19,29 @@ app.use(helmet());
 app.use(cors());
 
 
+
+
+
+app.use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "https://noteful-app-psi-sage.vercel.app");
+    res.setHeader(
+        "Access-Control-Allow-Headers",
+        "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+    );
+    res.setHeader(
+        "Access-Control-Allow-Methods",
+        "GET, POST, PATCH, PUT, DELETE, OPTIONS"
+    );
+    next();
+});
+
+
 app.use('/api/notes', notesRouter)
 app.use('/api/folders', foldersRouter)
 
-app.get('/api', (req, res) => {
-    res.send(noteful)
-})
+// app.get('/api', (req, res) => {
+//     res.send(noteful)
+// })
 
 app.get('/', (req, res) => {
     res.send('Hello, Noteful!');
