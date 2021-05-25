@@ -39,9 +39,9 @@ app.use((req, res, next) => {
 app.use('/api/notes', notesRouter)
 app.use('/api/folders', foldersRouter)
 
-// app.get('/api', (req, res) => {
-//     res.send(noteful)
-// })
+app.get('/api', (req, res) => {
+    res.send(noteful)
+})
 
 app.get('/', (req, res) => {
     res.send('Hello, Noteful!');
